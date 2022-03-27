@@ -57,9 +57,4 @@ def principal():
 
     saida(cont, v1, list_val, list_dir)
 
-if __name__ == "__main__":
-    
-    req_1 = principal()
-
-    
 
