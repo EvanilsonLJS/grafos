@@ -1,7 +1,6 @@
 
 from saida import saida
-
-def principal():
+class Requisito_1:
 
     v = [] # Lista de vertices
 
@@ -32,7 +31,6 @@ def principal():
         cont += 1
 
     #Recebe os vértices que vão se conectar
-    
     for i in range(cont):
         vertice = input(f"Digite o {i + 1} vertice da aresta: ")
         inserir(v1, vertice) #Não precisa do v2
@@ -56,5 +54,4 @@ def principal():
         inserir(list_val, val_2)
 
     saida(cont, v1, list_val, list_dir)
-
 
