@@ -1,7 +1,3 @@
-from curses.ascii import isdigit
-from pickle import UNICODE
-
-
 v = [] # Lista de vertices
 v1 = [] # Lista do primeiro vertice de cada aresta
 v2 = [] # Lista do segundo vertice de cada aresta
@@ -96,31 +92,25 @@ while opcao != 0:
                     v2.append(vertice2)
                     value.append(valor)
 
-    
     #Inserindo em lote (req2)
     if opcao == 2:
-        aux = []
+        arestas = []
         flag = True
         
-       
-
         while flag == True:
             lote = str(input("Digite o grafo em lote:"))
 
-            # Adiciona a string a um lista auxiliar chamada aux
+            # Pega apenas os vertices (Alfabeticos) e inseri em v
             for i in range(len(lote)):
-                lote[i].split()
-                aux.append(lote[i])
+                if lote[i].isalpha():
+                    v.append(lote[i])
             
-            # Diferencia o que for alfabetico e numerico, alfabetico são vertices, numericos são arestas
-            for j in range(len(aux)):
-                if str(aux[j]).isalpha():
-                    v.append(aux[j])
+            # Adiciona o rotulo das arestas na lista arestas
+            for i in range(len(lote)):
+                if lote[i].isnumeric():
+                    arestas.append(lote[i])
 
-                if str(aux[j]).isnumeric():
-                    value.append(aux[j])
-
-            # Adiciona os vertices as listas v1 e v2 
+            #  Adiciona os vertices as listas v1 e v2 
             x = 0
             y = 0
             for i in range(len(v)):
@@ -131,10 +121,21 @@ while opcao != 0:
                 if len(v1) + len(v2) == len(v):
                     break
             
-            if len(lote) == len(aux):
-                flag = False
+            #verificando se a aresta a ser adicionada é válida (não é laço, nem transforma em multigrafo)
+            for j in range(len(v1)):
+                if v1[j] == v2[j]:
+                    print('Laços não são permitidos!')
+                    break
+                if v1.count(v1[j]) > 1 and v2.count(v2[j]) > 1:
+                    print('Uma aresta com esses vértices já foi adicionada!')
+                    break
+                if (v2.count(v1[j]) == 1 and v1.count(v2[j]) == 1) and (v2.index(v1[j]) == v1.index(v2[j])):
+                    print("Grafos com arestas paralelas não são validos")
+                    break
+            
+            flag = False
+            
 
-    
     #Imprimindo o grau(req5)
     if opcao == 3:
         print("O grafo possui grau ",len(v))
@@ -213,6 +214,7 @@ while opcao != 0:
             elif dir == 0:
                 sum_adj = len(adj_entrada) + len(adj_saida)
                 print("Grau de adjacência: ", sum_adj)
+    
     # #identificando se 2 vértices são adjacentes (req8)
     if opcao == 8:
         v_exist = 0
