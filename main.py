@@ -1,3 +1,4 @@
+import networkx as nx
 
 v = [] # Lista de vertices
 v1 = [] # Lista do primeiro vertice de cada aresta
@@ -19,8 +20,8 @@ while opcao != 0:
     print('\nDigite:')
     print("1 - Para inserir um item")
     print("2 - Para inserir vários itens em uma única linha")
-    print("3 - Para imprimir o grau do grafo")
-    print("4 - Para imprimir a ordem do grafo")
+    print("3 - Para imprimir o ordem do grafo")
+    print("4 - Para imprimir a grau do grafo")
     print("5 - Para imprimir grau e ordem do grafo")
     print("6 - Para listar os vértices adjacentes")
     print("7 - Para imprimir o Grau de Adjacência do vértice")
@@ -98,7 +99,10 @@ while opcao != 0:
     #Inserindo em lote (req2)
     if opcao == 2:
 
-        with open('vertices.txt', 'r') as file:
+        arq_vert = input("Digite o nome do arquivo de vertices: ")
+        arq_arest = input("Digite o nome do arquivo de arestas: ")
+
+        with open(f'{arq_vert}', 'r') as file:
             for line in file.readlines():
                 line = line.rstrip('\n')
                 repeat_v = 0
@@ -112,7 +116,7 @@ while opcao != 0:
                     v.append(line)
         file.close()
         
-        with open('arestas.txt', 'r') as file:
+        with open(f'{arq_arest}', 'r') as file:
             teste = []
             for line in file.readlines():
                 line = line.rstrip('\n')
@@ -121,15 +125,15 @@ while opcao != 0:
                 final = teste2.split()
                 v1.append(final[0])
                 v2.append(final[1])
-                value.append(final[2])
+                value.append(int(final[2]))
                 #print(v1[-1] + " " + v2[-1] + " " + value[-1])
         file.close()
        
-    #Imprimindo o grau(req5)
+    #Imprimindo o ordem(req5)
     if opcao == 3:
         print("O grafo possui ordem ",len(v))
 
-    #Imprimindo a ordem (req5)
+    #Imprimindo a grau (req5)
     if opcao == 4:
         print("O grafo possui grau ",len(v1))
 
@@ -162,15 +166,18 @@ while opcao != 0:
             
             for m in range(len(adj_v1)):
                 if dir == 0:
-                    print("Vértices adjacentes:", end = " ")
+                    if m == 0:
+                        print("Vértices adjacentes:", end = " ")
                 if dir == 1:
-                    print("Vértices de saída: ")
+                    if m == 0:
+                        print("Vértices de saída: ")
                 print(adj_v1[m], end = " ")
 
             
             for n in range(len(adj_v2)):
                 if dir == 1:
-                    print("\nVértices de entrada: ")
+                    if n == 0:
+                        print("\nVértices de entrada: ")
                 print(adj_v2[n], end = " ")
                 
             print("\n")
@@ -229,22 +236,23 @@ while opcao != 0:
 
     # Para indentificar a menor distancia entre dois vertices (req9)
     if opcao == 9:
-        distancia = []
-        referencia = []
-        closed = []
-        origem = input("Digite o rótulo do vértice de origem: ")
-        fim = input("Digite o vértice cuja distância será calculada: ")
-        a = 0
-        for a in range (len(v)):
-            if origem == v[a]:
-                distancia.append(0)
-                referencia.append(origem)
-                closed.append(1)
-            else: 
-                distancia.append(-1)
-                referencia.append("-")
-                closed.append(0)
+        if dir == 0:
+            g = nx.Graph()
+        else:
+            g = nx.DiGraph()
+            g.to_directed()
 
+        for i in range(len(v1)):
+            g.add_edge(v1[i], v2[i], weight=value[i])
+
+        vertice1 = input("Digite o 1° vertice: ")
+        #vertice1 = int(vertice1)
+        vertice2 = input("Digite o 1° vertice: ")
+        #vertice2 = int(vertice2)
+
+        print("Caminho mais curto: ", nx.shortest_path(g, vertice1, vertice2, 'weight'))
+        print("Custo para percorrer: ", nx.shortest_path_length(g, vertice1, vertice2, 'weight'))
+          
     # Imprime a lista de adjacências (req4)
     if opcao == 10:
         v_exist = 1
@@ -313,5 +321,6 @@ while opcao != 0:
         print(v1)
         print(v2)
 
-    if opcao == 0:
+    if opcao == 0:  
+        print("Obrigado =))")
         break
