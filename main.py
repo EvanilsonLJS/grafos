@@ -19,16 +19,16 @@ opcao = -1
 while opcao != 0:
     print('\nDigite:')
     print("1 - Para inserir um item")
-    print("2 - Para inserir vários itens em uma única linha")
+    print("2 - Para inserir vários itens por um arquivo")
     print("3 - Para imprimir o ordem do grafo")
     print("4 - Para imprimir a grau do grafo")
     print("5 - Para imprimir grau e ordem do grafo")
     print("6 - Para listar os vértices adjacentes")
-    print("7 - Para imprimir o Grau de Adjacência do vértice")
+    print("7 - Para imprimir o grau de adjacência do vértice")
     print("8 - Para identificar se dois vértices são adjacentes")
     print("9 - Para Retornar o caminho mais curto entre dois vértices")
-    print("10 - Pera imprimir a lista de adjacencia do Grafo ")
-    print("11 - Para verificar se o vertice é pendente")
+    print("10 - Pera imprimir a lista de adjacência do grafo ")
+    print("11 - Para verificar se o vértice é pendente")
     print("0 - Para encerrar")
 
     opcao = int(input("\n=> Opção: "))
@@ -245,9 +245,9 @@ while opcao != 0:
         for i in range(len(v1)):
             g.add_edge(v1[i], v2[i], weight=value[i])
 
-        vertice1 = input("Digite o 1° vertice: ")
+        vertice1 = input("Digite o vértice de origem: ")
         #vertice1 = int(vertice1)
-        vertice2 = input("Digite o 1° vertice: ")
+        vertice2 = input("Digite o vértice de destino: ")
         #vertice2 = int(vertice2)
 
         print("Caminho mais curto: ", nx.shortest_path(g, vertice1, vertice2, 'weight'))
@@ -320,6 +320,7 @@ while opcao != 0:
         print(v)
         print(v1)
         print(v2)
+        print(value)
 
     if opcao == 0:  
         print("Obrigado =))")
