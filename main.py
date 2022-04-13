@@ -228,8 +228,23 @@ while opcao != 0:
             print("Os vértices não são adjacentes!")
 
     # Para indentificar a menor distancia entre dois vertices (req9)
-    #if opcao == 9:
-       
+    if opcao == 9:
+        distancia = []
+        referencia = []
+        closed = []
+        origem = input("Digite o rótulo do vértice de origem: ")
+        fim = input("Digite o vértice cuja distância será calculada: ")
+        a = 0
+        for a in range (len(v)):
+            if origem == v[a]:
+                distancia.append(0)
+                referencia.append(origem)
+                closed.append(1)
+            else: 
+                distancia.append(-1)
+                referencia.append("-")
+                closed.append(0)
+
     # Imprime a lista de adjacências (req4)
     if opcao == 10:
         v_exist = 1
@@ -246,13 +261,12 @@ while opcao != 0:
             else:
                 adj_v1 = []
                 adj_v2 = []
-                i = 0
-                for i in range(len(v1)):
-                    if vertice == v1[i]:
-                        adj_v1.append(v2[i])
-                    elif vertice == v2[i]:
-                        adj_v2.append(v1[i])
-                #print(" -> ", end=" ")
+                w = 0
+                for w in range(len(v1)):
+                    if vertice == v1[w]:
+                        adj_v1.append(v2[w])
+                    elif vertice == v2[w]:
+                        adj_v2.append(v1[w])
                 print(v[j], end = " ")
                 for m in range(len(adj_v1)):
                     print(" -> ", end=" ")
@@ -293,7 +307,6 @@ while opcao != 0:
                 print("Esse vertice é do tipo pendente!")
             else:
                 print("Esse vertice não é do tipo pendente")
-
 
     if opcao == 20:
         print(v)
