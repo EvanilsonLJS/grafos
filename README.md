@@ -178,4 +178,12 @@ while opcao != 0:
 ```
 ## Como executar o sistema:
 
-- Primeiro voce precisa obter o diretório que contém o arquivo de execução do sistema ```main.py``` e os arquivos de dependência ```aero_a.txt```, ```aero_v.txt``` para no caso deseje obter o grafo em lote. Para obter o sistema você pode clonar esse repositório em sua maquina
+- [ATENÇÂO] - certifique-se que você tem ferramentas dependentes para obter o repósitorio no GitHub e para executar o sistema. Veja as ferramentas utilizadas no primeiro tópico desse readme. 
+- 
+- Primeiro voce precisa obter o diretório que contém o arquivo de execução do sistema ```main.py``` e os arquivos de dependência ```aero_a.txt```, ```aero_v.txt``` para no caso deseje obter o grafo em lote. Para obter o sistema você pode clonar esse repositório em sua maquina.
+
+- Considerando que você tem o git instalado Em sua maquina, digite ```sh git clone https://github.com/EvanilsonLJS/grafos.git```
+
+- Após o repositório clonado voce pode navegar para raiz do diretório ```grafos/```, e em seu terminal digite: ```python3 main.py```
+
+- Por fim voce pode se divertir criando grafos, obrigado =).
