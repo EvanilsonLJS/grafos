@@ -181,7 +181,7 @@ while opcao != 0:
 
 - Primeiro voce precisa obter o diretório que contém o arquivo de execução do sistema ```main.py``` e os arquivos de dependência ```aero_a.txt```, ```aero_v.txt``` para no caso deseje obter o grafo em lote. Para obter o sistema você pode clonar esse repositório em sua maquina.
 
-- Considerando que você tem o git instalado. Em sua maquina, digite ```sh git clone https://github.com/EvanilsonLJS/grafos.git```
+- Considerando que você tem o git instalado. Em sua maquina, digite ```git clone https://github.com/EvanilsonLJS/grafos.git```
 
 - Após o repositório clonado voce pode navegar para raiz do diretório ```grafos/```, e em seu terminal digite: ```python3 main.py```
 
